@@ -10,6 +10,7 @@
 
     <% for(let oneListing of listings){ %>
         <p>Listing at: <%= oneListing.streetAddress %></p>
-    <% }  %>
+        <a href="/listings/<%= oneListing._id %>">See Details</a>
+    <% } %>
 </body>
 </html>
