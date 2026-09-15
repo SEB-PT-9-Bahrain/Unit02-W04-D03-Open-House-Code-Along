@@ -43,8 +43,15 @@ router.get('/:listingId/edit', async (req,res)=>{
     res.render('update-listing.ejs',{listing: foundListing})
 })
 
-router.put('/listings/:listingId', async(req,res)=>{
-    const updatedListing = await Listing.findByIdAndUpdate(req.params.listingId, req.body)
+router.put('/:listingId', async(req,res)=>{
+    const {streetAddress, city, price, size} = req.body
+    const updatedListing = await Listing.findByIdAndUpdate(req.params.listingId, {
+        streetAddress,
+        city,
+        price,
+        size
+    })
+    res.redirect('/listings')
 })
 
 module.exports = router;
